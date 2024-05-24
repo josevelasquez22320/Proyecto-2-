@@ -1,11 +1,16 @@
 /*
- * P2, proob.c
- *
- * Created: 21/05/2024 16:57:09
- * Author : JAVG
+/*
+*UNIVERSIDAD DEL VALLE DE GUATEMALA
+*IE2023: PROGRAMACI脫N DE MICROCONTROLADORES
+*Lab2.asm
+*AUTOR: Jose Andr茅s Vel谩squez Gac铆a
+*PROYECTO: lab6
+*HARDWARE: ATMEGA328P
+*CREADO: 30/04/2024
+*脷LTIMA MODIFICACI脫N: 30/04/2024 23:36*/
  */ 
 
-//Librer韆s utl.
+//Librer铆as utl.
 #define F_CPU 16000000
 #include <avr/io.h>
 #include <stdint.h>
@@ -33,12 +38,12 @@
 #define led2		PIND6
 #define savePos		PIND7
 
-//definici髇 de constantes
+//definici贸n de constantes
 #define manualMode	1
 #define eepromMode	2
 #define usartMode	3
 
-//definici髇 de variables
+//definici贸n de variables
 volatile char bufferRX;		//Es volatil cambia en cualquier tiempo
 uint8_t count = 0;
 uint8_t dir = 0;
@@ -171,16 +176,16 @@ ISR (PCINT2_vect){
 			
 			if(counterPos == 1){
 				counterPos = 2;							//SELECCIONA LA SIGUIENTE POSICION PRA GUARDADO
-				writeText("\nGuardada posici髇 1\n\n");	//MENSAJE AFIRMATIVO 1
+				writeText("\nGuardada posici贸n 1\n\n");	//MENSAJE AFIRMATIVO 1
 			}else if(counterPos == 2){
 				counterPos = 3;							//SELECCIONA LA SIGUIENTE POSICION PRA GUARDADO
-				writeText("\nGuardada posici髇 2\n\n");	//MENSAJE AFIRMATIVO 2
+				writeText("\nGuardada posici贸n 2\n\n");	//MENSAJE AFIRMATIVO 2
 			}else if(counterPos == 3){
 				counterPos = 4;							//SELECCIONA LA SIGUIENTE POSICION PRA GUARDADO
-				writeText("\nGuardada posici髇 3\n\n");	//MENSAJE AFIRMATIVO 3
+				writeText("\nGuardada posici贸n 3\n\n");	//MENSAJE AFIRMATIVO 3
 			}else if(counterPos == 4){
 				counterPos = 1;							//SELECCIONA LA SIGUIENTE POSICION PRA GUARDADO
-				writeText("\nGuardada posici髇 4\n\n");	//MENSAJE AFIRMATIVO 4
+				writeText("\nGuardada posici贸n 4\n\n");	//MENSAJE AFIRMATIVO 4
 			}
 			
 		}
@@ -221,7 +226,7 @@ void initUART9600(void){
 	
 	//CONFIG. PARA REGISTRO C
 	UCSR0C = 0;
-	UCSR0C |= (1 << UCSZ01) | (1 << UCSZ00);		//TAMA袿 8BITS, NO PARITY 1 BIT DE PARO
+	UCSR0C |= (1 << UCSZ01) | (1 << UCSZ00);		//TAMA脩O 8BITS, NO PARITY 1 BIT DE PARO
 	
 	//Baudrate
 	UBRR0 = 207;		// 9600
